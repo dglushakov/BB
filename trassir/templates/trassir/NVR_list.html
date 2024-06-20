@@ -1,0 +1,10 @@
+{% extends 'trassir/index.html' %}
+
+{% block body %}
+    <h1>SERVERS</h1>
+    {% for NVR in nvr_list %}
+        {{ forloop.counter }} {{ NVR }} {{ NVR.ip }}
+        <a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}</a>
+    {% endfor %}
+
+{% endblock %}
