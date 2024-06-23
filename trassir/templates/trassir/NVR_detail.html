@@ -1,6 +1,19 @@
 {% extends 'trassir/index.html' %}
 
 {% block body %}
-    some data about {{ nvr.name }} server
-     {{ nvr.ip }}
+    <div class="row">
+    <div class="col bg-secondary">
+        some data about {{ nvr.name }} server
+    </div>
+    </div>
+
+
+    <div class="row">
+    <div class="col bg-secondary">
+        {{ nvr.ip }}
+    </div>
+    </div>
+
+
+
 {% endblock %}
