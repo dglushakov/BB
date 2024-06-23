@@ -1,10 +1,38 @@
 {% extends 'trassir/index.html' %}
 
 {% block body %}
-    <h1>SERVERS</h1>
-    {% for NVR in nvr_list %}
-        {{ forloop.counter }} {{ NVR }} {{ NVR.ip }}
-        <a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}</a>
-    {% endfor %}
+    <div class="row">
+        <div class="col">
+            <h1>SERVERS</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        IP
+                    </th>
+                    <th>
+                        ?
+                    </th>
+                </tr>
+                {% for NVR in nvr_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}
+                        <td>{{ NVR }}</td>
+                        <td>{{ NVR.ip }}</td>
+                        <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 
 {% endblock %}
