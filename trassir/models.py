@@ -46,16 +46,9 @@ class NVR(models.Model):
             if r.status_code == 200:
                 return json.loads(r.text)
 
-        except (ConnectionError, requests.exceptions.ReadTimeout):
+        except Exception as ex:
             py_logger.warning('Connection Error, ip=' + ip)
-            # raise Exception('ConnectionError')
-            return 'error'
-        except(requests.exceptions.ConnectTimeout):
-            py_logger.warning('Connection Error, ip=' + ip)
-            # raise Exception('ConnectionError')
-            return 'error'
-        except (requests.exceptions.SSLError):
-            py_logger.warning('SSL error, ip=' + ip)
+            py_logger.warning(ex)
             # raise Exception('ConnectionError')
             return 'error'
 

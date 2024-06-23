@@ -23,7 +23,10 @@
                         ?
                     </th>
                     <th>
-                        Status
+                        Status 1
+                    </th>
+                    <th>
+                        Status 2
                     </th>
                 </tr>
                 {% for NVR in nvr_list %}
@@ -33,6 +36,7 @@
                         <td>{{ NVR.ip }}</td>
                         <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}_</a></td>
                         <td>{{ NVR.get_health }}</td>
+                        <td>{{  NVR.get_health.channels_totalds }}</td>
                     </tr>
                 {% endfor %}
             </table>
