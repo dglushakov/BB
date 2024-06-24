@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 import json, requests
 import logging
@@ -65,3 +67,9 @@ class NVR(models.Model):
                        'automation',
                        'disks_stat_main_days', 'disks_stat_priv_days', 'disks_stat_subs_days']
         return health_keys
+
+
+class Health(models.Model):
+    server = models.ForeignKey(NVR, on_delete=models.CASCADE)
+    health = models.TextField()
+    collected_at = models.DateTimeField(default=datetime.datetime.now())
