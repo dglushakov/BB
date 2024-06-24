@@ -37,6 +37,8 @@
                             {% for key, value in NVR.get_last_health.items %}
                                 <td>{{ value }}</td>
                             {% endfor %}
+                        {% elif NVR.get_last_health %}
+                            <td>{{ NVR.get_last_health }}</td>
                         {% endif %}
 
                     </tr>
