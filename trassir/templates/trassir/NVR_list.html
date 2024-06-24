@@ -19,9 +19,7 @@
                     <th>
                         IP
                     </th>
-                    <th>
-                        ?
-                    </th>
+
                     <th>
                         Status 1
                     </th>
@@ -32,9 +30,9 @@
                 {% for NVR in nvr_list %}
                     <tr>
                         <td>{{ forloop.counter }}
-                        <td>{{ 'NVR' }}</td>
+                        <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR }}</a></td>
                         <td>{{ NVR.ip }}</td>
-                        <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}_</a></td>
+
                         <td>{{ NVR.get_health }}</td>
                         {% for key, value in NVR.get_health.items %}
                             <td>{{ value }}</td>
