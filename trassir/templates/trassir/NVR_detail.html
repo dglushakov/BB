@@ -2,17 +2,30 @@
 
 {% block body %}
     <div class="row">
-    <div class="col bg-secondary">
-        some data about {{ nvr.name }} server
-    </div>
+        <div class="col bg-secondary">
+            some data about {{ nvr.name }} server
+        </div>
     </div>
 
 
     <div class="row">
-    <div class="col bg-secondary">
-        {{ nvr.ip }}
+        <div class="col bg-secondary">
+            {{ nvr.ip }}
+        </div>
     </div>
-    </div>
+
+
+
+    <table class="table table-striped">
+        {% for health_data in nvr.health_set.all%}
+            <tr>
+                <td>{{ forloop.counter }}</td><td>{{ health_data.health }}</td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
 
 
 
