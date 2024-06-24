@@ -7,26 +7,19 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col bg-secondary">
             {{ nvr.ip }}
         </div>
     </div>
 
-
-
     <table class="table table-striped">
-        {% for health_data in nvr.health_set.all%}
+        {% for health_data in nvr.health_set.all %}
             <tr>
-                <td>{{ forloop.counter }}</td><td>{{ health_data.health }}</td>
-
+                <td>{{ forloop.counter }}</td>
+                <td>{{ health_data.health }}</td>
             </tr>
         {% endfor %}
-
     </table>
-
-
-
 
 {% endblock %}
