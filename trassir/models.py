@@ -16,7 +16,8 @@ py_logger.addHandler(py_handler)
 # Create your models here.
 
 class NVR(models.Model):
-    ip = models.CharField(max_length=100, unique=True)
+    # ip = models.CharField(max_length=100, unique=True) TODO unique after testing
+    ip = models.CharField(max_length=100)
     port = models.IntegerField(default=80)
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
