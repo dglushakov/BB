@@ -25,9 +25,9 @@
                     <th>
                         Status 1
                     </th>
-                    <th>
-                        Status 2
-                    </th>
+                    {% for key in nvr_list.first.get_health_keys %}
+                        <th>{{ key }}</th>
+                    {% endfor %}
                 </tr>
                 {% for NVR in nvr_list %}
                     <tr>
@@ -36,7 +36,10 @@
                         <td>{{ NVR.ip }}</td>
                         <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR.name }}_</a></td>
                         <td>{{ NVR.get_health }}</td>
-                        <td>{{  NVR.get_health.channels_totalds }}</td>
+                        {% for key, value in NVR.get_health.items %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+
                     </tr>
                 {% endfor %}
             </table>

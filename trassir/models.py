@@ -22,7 +22,7 @@ class NVR(models.Model):
     name = models.CharField(max_length=200, editable=False)
 
     def __str__(self):
-        return self.name
+        return self.name + '(' + self.ip + ')'
 
     @staticmethod
     def make_request(command, username=None, password=None, sdk_password=None, session_id=None, ip='127.0.0.1',
@@ -57,5 +57,11 @@ class NVR(models.Model):
                                   password=self.password,
                                   sdk_password=self.sdk_password,
                                   ip=str(self.ip))
-
         return health
+
+    @staticmethod
+    def get_health_keys():
+        health_keys = ['disks', 'database', 'channels_total', 'channels_online', 'uptime', 'cpu_load', 'network',
+                       'automation',
+                       'disks_stat_main_days', 'disks_stat_priv_days', 'disks_stat_subs_days']
+        return health_keys
