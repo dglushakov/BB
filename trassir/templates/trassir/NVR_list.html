@@ -32,11 +32,12 @@
                         <td>{{ forloop.counter }}
                         <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR }}</a></td>
                         <td>{{ NVR.ip }}</td>
-                        <td><a href ="{% url 'trassir:get_health' NVR.id %}">+</a></td>
-                        {% for key, value in NVR.get_last_health.items %}
-                            <td>{{ value }}</td>
-                        {% endfor %}
-
+                        <td><a href="{% url 'trassir:get_health' NVR.id %}">+</a></td>
+                        {% if NVR.get_last_health.items %}
+                            {% for key, value in NVR.get_last_health.items %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        {% endif %}
 
                     </tr>
                 {% endfor %}

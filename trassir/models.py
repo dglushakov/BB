@@ -69,8 +69,11 @@ class NVR(models.Model):
         return health_keys
 
     def get_last_health(self):
-        result = json.loads(Health.objects.filter(server=self).order_by('-collected_at')[0].health.replace("'", '"'))
+        try:
+            result = json.loads(Health.objects.filter(server=self).order_by('-collected_at')[0].health.replace("'", '"'))
         # print(result)
+        except IndexError:
+            return False
         return result
 
 
