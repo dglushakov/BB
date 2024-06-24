@@ -21,7 +21,7 @@
                     </th>
 
                     <th>
-                        Status 1
+                        Refresh
                     </th>
                     {% for key in nvr_list.first.get_health_keys %}
                         <th>{{ key }}</th>
@@ -32,10 +32,7 @@
                         <td>{{ forloop.counter }}
                         <td><a href="{% url 'trassir:detail' NVR.id %}">{{ NVR }}</a></td>
                         <td>{{ NVR.ip }}</td>
-                        <td><a href ="{% url 'trassir:get_health' NVR.id %}">text</a></td>
-{#                        {% for key, value in NVR.get_health.items %}#}
-                        <td>{{ NVR.get_last_health }}</td>
-                        <td>{{ NVR.get_last_health }}</td>
+                        <td><a href ="{% url 'trassir:get_health' NVR.id %}">+</a></td>
                         {% for key, value in NVR.get_last_health.items %}
                             <td>{{ value }}</td>
                         {% endfor %}

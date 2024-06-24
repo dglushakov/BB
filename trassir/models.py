@@ -70,13 +70,14 @@ class NVR(models.Model):
 
     def get_last_health(self):
         result = json.loads(Health.objects.filter(server=self).order_by('-collected_at')[0].health.replace("'", '"'))
+        # print(result)
         return result
 
 
 class Health(models.Model):
     server = models.ForeignKey(NVR, on_delete=models.CASCADE)
     health = models.TextField()
-    collected_at = models.DateTimeField(default=datetime.datetime.now())
+    collected_at = models.DateTimeField()
 
     def __str__(self):
         return self.server.ip + str(self.collected_at)
